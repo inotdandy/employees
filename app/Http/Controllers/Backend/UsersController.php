@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UsersController extends Controller
 {
@@ -68,9 +69,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -80,9 +81,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //
+        $user->update([
+            'username' => $request->username,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+        ]);
+
+        return redirect()->route('users.index')->with('message', 'User\'s info successfully updated.');
     }
 
     /**
@@ -91,8 +99,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if(auth()->user()->id != $user->id){
+            $user->delete();
+            return redirect()->route('users.index')->with('message', 'User successfully deleted');
+        }
+
+        return redirect()->route('users.index')->with('error', 'Your deleting your own record');
     }
 }

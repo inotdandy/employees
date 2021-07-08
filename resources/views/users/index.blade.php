@@ -7,6 +7,11 @@
                 @if(Session::has('message'))
                     <div class="alert alert-success">{{ Session::get('message') }}</div>
                 @endif
+
+                @if(Session::has('error'))
+                    <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                @endif
+
                 <div class="card-header d-flex justify-content-between">
                     <div>
                         <h2>{{ __('Users') }}</h2>
@@ -33,7 +38,7 @@
                             <td>{{ $user->first_name }}</td>
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>Edit / Delete</td>
+                            <td><a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-success">Edit</a></td>
                             </tr>
                            @endforeach
                         </tbody>
