@@ -17,6 +17,16 @@
                         <h2>{{ __('Users') }}</h2>
                     </div>
                     <div>
+                        <form class="d-flex" method="GET" action="{{ route('users.index') }}">
+                            <div  class="mr-2">
+                                <input type="text" class="form-control" placeholder="Search" name="search">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary mb-3">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
                         <a href="{{ route('users.create') }}">Create User</a>
                     </div>
                 </div>
@@ -26,8 +36,7 @@
                         <thead>
                             <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
+                            <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             </tr>
                         </thead>
@@ -35,8 +44,7 @@
                             @foreach($users as $user)
                             <tr>
                             <th scope="row">{{ $user->id }}</th>
-                            <td>{{ $user->first_name }}</td>
-                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
                             <td><a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-success">Edit</a></td>
                             </tr>

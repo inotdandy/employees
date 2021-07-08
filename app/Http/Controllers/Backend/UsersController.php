@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\ChangePasswordRequest;
 
 class UsersController extends Controller
 {
@@ -16,9 +17,15 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
-        $users = User::orderBy('created_at', 'DESC')->get();
+        if($request->has('search')){
+            $users = User::where('username', 'like', "%{$request->search}%")
+                         ->orWhere('email', 'like', "%{$request->search}%")
+                         ->get();
+        }else{
+            $users = User::orderBy('created_at', 'DESC')->get();
+        }
 
         return view('users.index', compact('users'));
     }
@@ -107,5 +114,14 @@ class UsersController extends Controller
         }
 
         return redirect()->route('users.index')->with('error', 'Your deleting your own record');
+    }
+
+    public function changePassword(ChangePasswordRequest $request, User $user){
+        
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->route('users.index')->with('message', 'User\'s password is successfully change');
     }
 }
