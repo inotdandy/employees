@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\UsersController;
+use App\Http\Controllers\Backend\StatesController;
 use App\Http\Controllers\Backend\CountriesController;
 
 /*
@@ -27,3 +28,5 @@ Route::resource('users', UsersController::class);
 Route::put('users/{user}/change_password', [UsersController::class, 'changePassword'])->name('users.change_password');
 
 Route::resource('/countries', CountriesController::class);
+
+Route::resource('/states', StatesController::class);
