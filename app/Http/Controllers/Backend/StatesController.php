@@ -18,10 +18,9 @@ class StatesController extends Controller
     public function index(Request $request)
     {   
         $states = State::all();
-        // if($request->has('search')){
-        //     $states = State::where('name', 'like', "%{$request->search}%")
-        //                 ->orWhere('')
-        // }
+        if($request->has('search')){
+            $states = State::where('name', 'like', "%{$request->search}%")->get();
+        }
         
         return view('states.index', compact('states'));
     }
@@ -68,9 +67,11 @@ class StatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(State $state)
+    {   
+        $countries = Country::all();
+
+        return view('states.edit', compact('countries', 'state'));
     }
 
     /**
@@ -80,9 +81,11 @@ class StatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreStateRequest $request, State $state)
     {
-        //
+        $state->update($request->validated());
+
+        return redirect()->route('states.index')->with('message'. 'State succefully updated');
     }
 
     /**
@@ -91,8 +94,10 @@ class StatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(State $state)
     {
-        //
+        $state->delete();
+
+        return redirect()->route('states.index')->with('message'. 'State succefully deleted');
     }
 }
