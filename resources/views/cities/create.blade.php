@@ -6,25 +6,25 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <h2>{{ __('Add State') }}</h2>
+                        <h2>{{ __('Add City') }}</h2>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('states.store') }}">
+                    <form method="POST" action="{{ route('cities.store') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('State') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select form-control" aria-label="Default select example" name="country_id">
-                                    @foreach($countries as $country)
-                                        <option value="{{$country->id}}">{{ $country->name }}</option>
+                                <select class="form-select form-control" aria-label="Default select example" name="state_id">
+                                    @foreach($states as $state)
+                                        <option value="{{$state->id}}">{{ $state->name }}</option>
                                     @endforeach
                                 </select>
                                 
-                                @error('country_name')
+                                @error('state_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('State Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('City Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -49,7 +49,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Create State') }}
+                                    {{ __('Create City') }}
                                 </button>
                             </div>
                         </div>
