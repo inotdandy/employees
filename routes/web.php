@@ -36,3 +36,7 @@ Route::resource('/states', StatesController::class);
 Route::resource('/cities', CitiesController::class);
 
 Route::resource('/departments', DepartmentsController::class);
+
+Route::get('{any}', function(){
+    return view('employees.index');
+})->where('any', '.*');
