@@ -27,7 +27,7 @@
                         </form>
                     </div>
                     <div>
-                        <a href="{{ route('states.create') }}">Create User</a>
+                        <a href="{{ route('states.create') }}">Create State</a>
                     </div>
                 </div>
 

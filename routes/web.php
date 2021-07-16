@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\UsersController;
 use App\Http\Controllers\Backend\CitiesController;
 use App\Http\Controllers\Backend\StatesController;
 use App\Http\Controllers\Backend\CountriesController;
+use App\Http\Controllers\Backend\DepartmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::resource('/countries', CountriesController::class);
 Route::resource('/states', StatesController::class);
 
 Route::resource('/cities', CitiesController::class);
+
+Route::resource('/departments', DepartmentsController::class);

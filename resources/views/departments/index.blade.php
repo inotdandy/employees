@@ -14,10 +14,10 @@
 
                 <div class="card-header d-flex justify-content-between">
                     <div>
-                        <h2>{{ __('Countries') }}</h2>
+                        <h2>{{ __('Departments') }}</h2>
                     </div>
                     <div>
-                        <form class="d-flex" method="GET" action="{{ route('countries.index') }}">
+                        <form class="d-flex" method="GET" action="{{ route('departments.index') }}">
                             <div  class="mr-2">
                                 <input type="text" class="form-control" placeholder="Search" name="search">
                             </div>
@@ -27,7 +27,7 @@
                         </form>
                     </div>
                     <div>
-                        <a href="{{ route('countries.create') }}">Create Country</a>
+                        <a href="{{ route('departments.create') }}">Create Department</a>
                     </div>
                 </div>
 
@@ -36,17 +36,15 @@
                         <thead>
                             <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Code</th>
                             <th scope="col">Name</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($countries as $country)
+                            @foreach($departments as $department)
                             <tr>
-                            <th scope="row">{{ $country->id }}</th>
-                            <td>{{ $country->zip_code }}</td>
-                            <td>{{ $country->name }}</td>
-                            <td><a href="{{ route('countries.edit', $country) }}" class="btn btn-sm btn-success">Edit</a></td>
+                            <th scope="row">{{ $department->id }}</th>
+                            <td>{{ $department->name }}</td>
+                            <td><a href="{{ route('departments.edit', $department) }}" class="btn btn-sm btn-success">Edit</a></td>
                             </tr>
                            @endforeach
                         </tbody>
