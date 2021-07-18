@@ -1898,6 +1898,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Index'
 });
@@ -37617,15 +37621,29 @@ var staticRenderFns = [
                   _c("tr", [
                     _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Code")]),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("First Name")
+                    ]),
                     _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")])
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Last Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Address")]),
+                    _vm._v(" "),
+                    _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("Department")
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
                 _c("tbody", [
                   _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td"),
                     _vm._v(" "),
                     _c("td"),
                     _vm._v(" "),

@@ -31,13 +31,17 @@
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Department</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row"></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="" class="btn btn-sm btn-success">Edit</a></td>
