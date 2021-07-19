@@ -1902,6 +1902,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Index'
 });
@@ -2002,15 +2005,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [{
   path: '/employees',
-  name: 'employees.index',
+  name: 'EmployeeIndex',
   component: _components_employees_Index__WEBPACK_IMPORTED_MODULE_0__.default
 }, {
   path: '/create',
-  name: 'employees.create',
+  name: 'EmployeeCreate',
   component: _components_employees_Create__WEBPACK_IMPORTED_MODULE_1__.default
 }, {
-  path: '/employees',
-  name: 'employees.edit',
+  path: '/employees/edit/:id',
+  name: 'EmployeeEdit',
   component: _components_employees_Edit__WEBPACK_IMPORTED_MODULE_2__.default
 }];
 
@@ -37555,14 +37558,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
+  return _c(
+    "div",
+    [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card" }, [
@@ -37574,94 +37572,109 @@ var staticRenderFns = [
               "div",
               { staticClass: "card-header d-flex justify-content-between" },
               [
-                _c("div", [_c("h2", [_vm._v("Employees")])]),
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "form",
-                    {
-                      staticClass: "d-flex",
-                      attrs: { method: "GET", action: "" }
-                    },
-                    [
-                      _c("div", { staticClass: "mr-2" }, [
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Search",
-                            name: "search"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary mb-3",
-                            attrs: { type: "submit" }
-                          },
-                          [_vm._v("Search")]
-                        )
-                      ])
-                    ]
-                  )
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
-                _c("div", [
-                  _c("a", { attrs: { href: "" } }, [_vm._v("Create Employee")])
-                ])
+                _c(
+                  "div",
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "EmployeeCreate" } } },
+                      [_vm._v("Create Employee")]
+                    )
+                  ],
+                  1
+                )
               ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("First Name")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Last Name")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Address")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Department")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td"),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-sm btn-success",
-                          attrs: { href: "" }
-                        },
-                        [_vm._v("Edit")]
-                      )
-                    ])
-                  ])
-                ])
-              ])
+            _vm._m(2)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("router-view")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h2", [_vm._v("Employees")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "form",
+        { staticClass: "d-flex", attrs: { method: "GET", action: "" } },
+        [
+          _c("div", { staticClass: "mr-2" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Search", name: "search" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary mb-3",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("Search")]
+            )
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("table", { staticClass: "table" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("First Name")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Last Name")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Address")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Department")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td"),
+            _vm._v(" "),
+            _c("td"),
+            _vm._v(" "),
+            _c("td"),
+            _vm._v(" "),
+            _c("td"),
+            _vm._v(" "),
+            _c("td"),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "a",
+                { staticClass: "btn btn-sm btn-success", attrs: { href: "" } },
+                [_vm._v("Edit")]
+              )
             ])
           ])
         ])

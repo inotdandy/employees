@@ -22,7 +22,9 @@
                             </form>
                         </div>
                         <div>
-                            <a href="">Create Employee</a>
+                            <router-link
+                                :to="{name: 'EmployeeCreate'}"
+                            >Create Employee</router-link>
                         </div>
                     </div>
 
@@ -52,6 +54,7 @@
                 </div>
             </div>
         </div>
+        <router-view></router-view>
     </div>
 </template>
 

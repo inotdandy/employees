@@ -5,17 +5,17 @@ import EmployeeEdit from './components/employees/Edit'
 export const routes = [
     {
         path: '/employees',
-        name: 'employees.index',
+        name: 'EmployeeIndex',
         component: EmployeeIndex
     },
     {
         path: '/create',
-        name: 'employees.create',
+        name: 'EmployeeCreate',
         component: EmployeeCreate
     },
     {
-        path: '/employees',
-        name: 'employees.edit',
+        path: '/employees/edit/:id',
+        name: 'EmployeeEdit',
         component: EmployeeEdit
     }
 ]
