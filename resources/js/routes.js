@@ -9,12 +9,12 @@ export const routes = [
         component: EmployeeIndex
     },
     {
-        path: '/create',
+        path: '/employee/create',
         name: 'EmployeeCreate',
         component: EmployeeCreate
     },
     {
-        path: '/employees/edit/:id',
+        path: '/employee/edit/:id',
         name: 'EmployeeEdit',
         component: EmployeeEdit
     }

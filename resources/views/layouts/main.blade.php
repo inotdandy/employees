@@ -45,7 +45,7 @@
             
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/employees">
                    <span>Employee Management</span>
                 </a>
             </li>

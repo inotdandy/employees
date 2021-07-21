@@ -2,6 +2,6 @@
 
 @section('content')
     <div id="app">
-        <Index />
+        <router-view></router-view>
     </div>
 @endsection
