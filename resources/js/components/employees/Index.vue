@@ -11,15 +11,22 @@
                         <div>
                             <h2>Employees</h2>
                         </div>
-                        <div>
-                            <form class="d-flex" method="GET" action="">
-                                <div  class="mr-2">
-                                    <input type="text" class="form-control" placeholder="Search" name="search">
-                                </div>
-                                <div>
-                                    <button type="submit" class="btn btn-primary mb-3">Search</button>
-                                </div>
-                            </form>
+                        <div class="d-flex">
+                            <div>
+                                <form class="d-flex" method="GET">
+                                    <div  class="mr-2">
+                                        <input type="text" class="form-control" placeholder="Search" v-model="search">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary mb-3">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div>
+                                <select v-model="selectedDepartment" id="department" class="form-control">
+                                    <option v-for="department in departments" :key="department.id" :value="department.id">{{ department.name }}</option>
+                                </select>
+                            </div>
                         </div>
                         <div>
                             <router-link
@@ -69,19 +76,38 @@ export default {
         return {
             employees: [],
             showMessage: false,
-            message: ''
+            message: '',
+            search: null,
+            selectedDepartment: null,
+            departments: []
+        }
+    },
+    watch: {
+        search(){
+            this.getEmployees()
+        },
+        selectedDepartment(){
+            this.getEmployees()
         }
     },
     created(){
         this.getEmployees();
+        this.getDepartments();
     },
     methods: {
         getEmployees(){
-            axios.get('/api/employees')
+            axios.get('/api/employees', {params: {search:this.search, department:this.selectedDepartment}})
                 .then(res => {
                     this.employees = res.data.data
                 })
                 .catch(error => console.log(error))
+        },
+        getDepartments(){
+             axios.get(`/api/employees/departments`)
+            .then(res => {
+                this.departments = res.data
+            })
+            .catch(error => { console.log(error)})
         },
         deleteEmployee(id){
 
